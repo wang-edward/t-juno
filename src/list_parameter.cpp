@@ -1,4 +1,5 @@
 #include "parameter.cpp"
+#include "global_variables.cpp"
 
 // int n_midi_control, int n_mux_address, int n_mux_position, function <int (int)> n_scaling_function)
 
@@ -18,6 +19,47 @@ bool sawOn = true;
 //bool subOn = true;
 
 bool pwmLfoOn;
+
+bool  sustainPressed;
+
+// float panorama;
+float pitchBend;  // -1/+1 oct
+float pitchScale;
+int   octCorr;
+
+float lpfOctaveControl;
+float sumLpfLevels; 
+float maxLpfMod; // maximum amount of modulation without clipping
+
+float lpfEnvGain;
+float lpfLfoGain; 
+float lpfKbdGain;
+float lpfModWheelGain;
+
+// envelope
+bool  envOn = true;
+
+// FX
+bool  flangerOn;
+
+// portamento
+bool     portamentoOn = false;
+uint16_t portamentoTime; //ms ?
+int8_t   portamentoDir;
+float    portamentoStep;
+float    portamentoPos;
+
+// VIRTUAL PARAMS
+
+parameter hpf_resonance (76, -1, -1, [](int value) -> int {
+    return value*4.1/127.+0.9;
+});
+
+parameter lpf_mod_wheel_level (1, -1, -1, [](int value) -> int {
+    return (value/127.)*2;
+});
+
+// REAL PARAMS
 
 parameter lfo_rate (101, 0, 0, [](int value) -> int {
     return 30 * (pow((value/127.),2));
@@ -44,16 +86,11 @@ parameter noise_level (87, 0, 5, [](int value) -> int {
 });
 
 
-bool  sustainPressed;
 
-parameter channel_volume (7, 0, 12, [](int value) -> int {
-    return value/127.;
+
+parameter hpf_frequency (75, 0, 6, [](int value) -> int {
+    return pow(value,2);
 });
-
-// float panorama;
-float pitchBend;  // -1/+1 oct
-float pitchScale;
-int   octCorr;
 
 // 20-AUDIO_SAMPLE_RATE_EXACT/2.5
 parameter lpf_frequency (14, 0, 7, [](int value) -> int {
@@ -77,32 +114,8 @@ parameter lpf_keyboard_level (90, 0, 11, [](int value) -> int {
     return (value/127.) * 2;
 });
 
-parameter lpf_mod_wheel_level (1, -1, -1, [](int value) -> int {
-    return (value/127.)*2;
-});
-
-parameter hpf_frequency (75, 0, 6, [](int value) -> int {
-    return pow(value,2);
-});
-
-parameter hpf_resonance (76, 0, 7, [](int value) -> int {
-    return value*4.1/127.+0.9;
-});
-
-parameter envelope_attack(12, 1, 1, [](int value) -> int {
-    return 1000 * (pow((value/127.),2));
-});
-
-parameter envelope_decay(22, 1, 2, [](int value) -> int {
-    return value*200./127.;
-});
-
-parameter envelope_sustain(22, 1, 3, [](int value) -> int {
+parameter channel_volume (7, 0, 12, [](int value) -> int {
     return value/127.;
-});
-
-parameter envelope_release(13, 1, 4, [](int value) -> int {
-    return 1000 * (pow((value/127.),2));
 });
 
 parameter flanger_offset(26, 0, 13, [](int value) -> int {
@@ -121,30 +134,20 @@ parameter flanger_frequency_fine(29, 1, 0, [](int value) -> int {
     return value/127.;
 });
 
-float lpfOctaveControl;
-float sumLpfLevels; 
-float maxLpfMod; // maximum amount of modulation without clipping
+parameter envelope_attack(12, 1, 1, [](int value) -> int {
+    return 1000 * (pow((value/127.),2));
+});
 
-float lpfEnvGain;
-float lpfLfoGain; 
-float lpfKbdGain;
-float lpfModWheelGain;
+parameter envelope_decay(22, 1, 2, [](int value) -> int {
+    return value*200./127.;
+});
+
+parameter envelope_sustain(22, 1, 3, [](int value) -> int {
+    return value/127.;
+});
+
+parameter envelope_release(13, 1, 4, [](int value) -> int {
+    return 1000 * (pow((value/127.),2));
+});
 
 
-// envelope
-bool  envOn = true;
-
-
-// FX
-bool  flangerOn;
-int   flangerOffset;
-int   flangerDepth;
-float flangerFreqCoarse;
-float flangerFreqFine;
-
-// portamento
-bool     portamentoOn = false;
-uint16_t portamentoTime; //ms ?
-int8_t   portamentoDir;
-float    portamentoStep;
-float    portamentoPos;
