@@ -5,3 +5,5 @@ Mux mux_array[] = {
     Mux(Pin(25, INPUT, PinType::Analog),Pinset(29,30,31,32)),
     Mux(Pin(26, INPUT, PinType::Analog),Pinset(29,30,31,32))
 };
+
+const int DELAY_LENGTH;

@@ -15,7 +15,7 @@ class parameter {
 
         function <int (int)> scaling_function; //function to convert raw value into useable
 
-        parameter(int n_midi_control, int n_mux_position, int n_mux_address, function <int (int)> n_scaling_function);
+        parameter(int n_midi_control, int n_mux_address, int n_mux_position, function <int (int)> n_scaling_function);
         
         int initialize();
 

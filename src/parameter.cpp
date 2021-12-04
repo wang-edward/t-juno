@@ -1,6 +1,6 @@
 #include "parameter.h"
 
-parameter::parameter(int n_midi_control, int n_mux_position, int n_mux_address, function <int (int)> n_scaling_function) {
+parameter::parameter(int n_midi_control, int n_mux_address, int n_mux_position, function <int (int)> n_scaling_function) {
     midi_control = n_midi_control;
     mux_position = n_mux_position;
     mux_address = n_mux_address;
