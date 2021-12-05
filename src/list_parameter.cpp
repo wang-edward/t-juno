@@ -1,5 +1,8 @@
-#include "parameter.cpp"
+#include <algorithm>
+#include <math.h>
+#include "parameter.h"
 #include "global_variables.cpp"
+// #include "global_variables.cpp"
 
 // int n_midi_control, int n_mux_address, int n_mux_position, function <int (int)> n_scaling_function)
 
@@ -94,7 +97,7 @@ parameter hpf_frequency (75, 0, 6, [](int value) -> int {
 
 // 20-AUDIO_SAMPLE_RATE_EXACT/2.5
 parameter lpf_frequency (14, 0, 7, [](int value) -> int {
-    return min(float(pow(value, 2)),10000);
+    return std::min((int)(pow(value,2)),10000);
 });
 
 // 0.9-5.0

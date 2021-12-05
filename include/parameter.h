@@ -1,6 +1,4 @@
 #include <functional>
-#include <Mux.h>
-#include "global_variables.cpp"
 
 using namespace std;
 class parameter {
@@ -17,7 +15,7 @@ class parameter {
 
         parameter(int n_midi_control, int n_mux_address, int n_mux_position, function <int (int)> n_scaling_function);
         
-        int initialize();
+        void initialize();
 
         int check();
 

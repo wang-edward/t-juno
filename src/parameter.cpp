@@ -1,4 +1,5 @@
-#include "parameter.h"
+#include "parameter.h" 
+#include "global_variables.cpp" // mux_array
 
 parameter::parameter(int n_midi_control, int n_mux_address, int n_mux_position, function <int (int)> n_scaling_function) {
     midi_control = n_midi_control;
@@ -8,7 +9,7 @@ parameter::parameter(int n_midi_control, int n_mux_address, int n_mux_position, 
 };
 
 
-int parameter::initialize() {
+void parameter::initialize() {
     old_position = position = read();
 }
 

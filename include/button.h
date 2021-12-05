@@ -4,7 +4,7 @@ class button: public parameter {
 
     public:
 
-        boolean state;
+        bool state;
 
         parameter::parameter;
         int read() override {};
