@@ -1,16 +1,11 @@
-#include "global_variables.cpp"
-#include "parameter.h"
-
-class synth {
-    int analog_read() {
-
-        // for (param)
-
-        for (int i=0; i<num_params; i++) {
-
+#include "synth.h"
+int synth::check_all() {
+        for (parameter *p : parameters) {
+            p->check();
         }
-
-
         return 0;
     }
-};
+
+
+// VIRTUAL PARAMS
+
