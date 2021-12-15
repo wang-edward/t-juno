@@ -1,7 +1,12 @@
 #include "global_variables.cpp"
 #include "parameter.h"
+#include "button.h"
 
 class synth {
+
+    long timer = 0;
+    const int debounce_time = 5; //amount of time between checks, not total time
+
     parameter* parameters[22] = {
         &master_volume,
         &lfo_rate,
@@ -27,7 +32,16 @@ class synth {
         &envelope_release
     };
 
-    int check_all();
+    button* buttons[9] = {
+
+    };
+
+    void check_all();
+    
+    void check_buttons();
+
+    void check_parameters();
+
 };
 
 // VIRTUAL PARAMS

@@ -15,6 +15,6 @@ bool button::debounce() {
     return false;
 }
 
-bool button::update() {
+void button::update() {
     state = debounce();
 }

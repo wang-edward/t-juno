@@ -11,6 +11,6 @@ class button: public parameter {
         // bool read() override {};
         bool read_raw() {};
         bool debounce() {};
-        bool update() {};
+        void update() {};
 
 };
