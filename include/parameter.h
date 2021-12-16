@@ -12,8 +12,14 @@ class parameter {
         int mux_address; // which mux to search in (0-2)
 
         function <int (int)> scaling_function; //function to convert raw value into useable
+        function <void (int)> update_function; //function to update synth engine with new parameter
 
-        parameter(int n_midi_control, int n_mux_address, int n_mux_position, function <int (int)> n_scaling_function);
+        parameter(
+            int n_midi_control, 
+            int n_mux_address, int n_mux_position,
+            function <double (double)> n_scaling_function, 
+            function<void (double)> n_update_function
+        );
         
         void initialize();
 

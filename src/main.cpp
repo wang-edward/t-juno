@@ -1,5 +1,10 @@
 #include <Arduino.h>
 #include "Audio.h"
+
+#include "parameter.h"
+#include "global_variables.cpp"
+#include "list_parameter.cpp"
+
 // #include
 void setup() {
   // put your setup code here, to run once:
