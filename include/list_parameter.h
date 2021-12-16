@@ -1,6 +1,7 @@
 #include <math.h>
 #include "parameter.h"
 #include "update_parameter.h"
+#include <functional>
 //virtual params
 
 // parameter hpf_resonance (76, -1, -1, [](double value) -> double {
@@ -113,7 +114,15 @@ parameter envelope_release(13, 1, 4, [](double value) -> double {
     return 1000 * (pow((value/127.),2));
 });
 
-
+// button polyphony_on(); //use potentiometer for poly
+// button omni
+button velocity_on();
+button pulse_on();
+button saw_on();
+button pwm_lfo_on();
+button envelope_on();
+button flanger_on();
+button portamento_on();
 
 
 

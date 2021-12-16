@@ -3,6 +3,7 @@
 #include "voice.h"
 // #include "architecture.h"
 // #include "list_parameter.cpp"
+#include "button.h"
 
 class synth {
     public:
@@ -13,7 +14,7 @@ class synth {
 
         
 
-        #include "list_parameter.h"
+        
         static const int number_voices = 8;
         voice voices[number_voices] = {
             { &pulse_lfo0, &saw0, &sub0, &noise0, &osc_mixer0, &hpf0, &lpf0, &lpf_mod_mixer0, & lpf_envelope0, &lfo_envelope0, &envelope0, -1, 0},
@@ -25,6 +26,8 @@ class synth {
             { &pulse_lfo6, &saw6, &sub6, &noise6, &osc_mixer6, &hpf6, &lpf6, &lpf_mod_mixer6, & lpf_envelope6, &lfo_envelope6, &envelope6, -1, 0},
             { &pulse_lfo7, &saw7, &sub7, &noise7, &osc_mixer7, &hpf7, &lpf7, &lpf_mod_mixer7, & lpf_envelope7, &lfo_envelope7, &envelope7, -1, 0},
         };
+
+        #include "list_parameter.h"
 
         parameter* parameters[22] = {
             &master_volume,
