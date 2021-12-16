@@ -1,6 +1,6 @@
 #include "parameter.cpp"
 // #include <cstdint>
-class button: public parameter {
+class button: {
 
     public:
 

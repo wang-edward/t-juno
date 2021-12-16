@@ -1,16 +1,20 @@
 #include "global_variables.cpp"
-#include "parameter.h"
+// #include "parameter.h"
 #include "voice.h"
-#include "architecture.h"
-#include "list_parameter.cpp"
+// #include "architecture.h"
+// #include "list_parameter.cpp"
 
 class synth {
     public:
-        static const int number_voices = 8;
+        
 
         long timer = 0;
         const int debounce_time = 5; //amount of time between checks, not total time
 
+        
+
+        #include "list_parameter.h"
+        static const int number_voices = 8;
         voice voices[number_voices] = {
             { &pulse_lfo0, &saw0, &sub0, &noise0, &osc_mixer0, &hpf0, &lpf0, &lpf_mod_mixer0, & lpf_envelope0, &lfo_envelope0, &envelope0, -1, 0},
             { &pulse_lfo1, &saw1, &sub1, &noise1, &osc_mixer1, &hpf1, &lpf1, &lpf_mod_mixer1, & lpf_envelope1, &lfo_envelope1, &envelope1, -1, 0},
