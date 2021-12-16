@@ -18,8 +18,9 @@ class button {
             mux_position = n_mux_position;
             mux_address = n_mux_address;
             update_function = n_update_function;
+            state = false;
         }
-        // bool read() override {};
+
         bool read_raw();
         bool debounce();
         void update();

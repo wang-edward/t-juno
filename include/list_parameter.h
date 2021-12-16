@@ -14,6 +14,16 @@
 // }
 // );
 
+// button polyphony_on(); //use potentiometer for poly
+// button omni
+button velocity_on();
+button pulse_on();
+button saw_on();
+button pwm_lfo_on();
+button envelope_on();
+button flanger_on();
+button portamento_on();
+
 //REAL PARAMS
 
 parameter master_volume (8, 1, 8, [](double value) -> double {
@@ -38,12 +48,13 @@ parameter osc_lfo_level (102, 0, 2, [](double value) -> double {
 
 parameter pulse_width (24, 0, 3, [](double value) -> double {
     return (value/127.)*0.9+0.05;
-},
+},&update_pulse_width
 );
 
 parameter sub_level (86, 0, 4, [](double value) -> double {
     return value/127.;
-});
+},
+);
 
 parameter noise_level (87, 0, 5, [](double value) -> double {
     return max(0.01,value/127.);
@@ -113,16 +124,6 @@ parameter envelope_sustain(22, 1, 3, [](double value) -> double {
 parameter envelope_release(13, 1, 4, [](double value) -> double {
     return 1000 * (pow((value/127.),2));
 });
-
-// button polyphony_on(); //use potentiometer for poly
-// button omni
-button velocity_on();
-button pulse_on();
-button saw_on();
-button pwm_lfo_on();
-button envelope_on();
-button flanger_on();
-button portamento_on();
 
 
 
