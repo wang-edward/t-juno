@@ -1,2 +1,6 @@
 - add polyphony parameter
     - polyphony is controlled by pot instead of button
+
+- read multiplexer documentation to figure out optimal delay
+    - rn is 2ms? 
+    - also implement a poll every n ms instead of arduino delay
