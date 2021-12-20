@@ -9,11 +9,7 @@ class voice {
         AudioMixer4*                  osc_mixer;
         
         AudioFilterStateVariable*     hpf;
-        AudioFilterLadder*     lpf;
-        
-        AudioMixer4*                  lpf_mod_mixer;
-        AudioEffectEnvelope*          lpf_envelope;
-        AudioEffectEnvelope*          lfo_envelope;
+        AudioFilterLadder*            lpf;
         AudioEffectEnvelope*          envelope;
         
         int8_t  note;

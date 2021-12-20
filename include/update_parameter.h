@@ -1,4 +1,4 @@
-#include "architecture.h"
+// #include "architecture.h"
 void update_hpf_frequency(double value) {
     voice *v=voices, *end=voices + number_voices;
     do {
@@ -46,10 +46,10 @@ void update_pulse_width(double value) {
     }
 }
 
-//update sub level and noise level
+//update sub level 
 void update_sub_level(double value) {
     if (value>0) {
-        voice *v=oscs,*end=oscs+number_voices;
+        voice *v=voices,*end=voices+number_voices;
         float velocity;
         do {
         if (v->note < 0) continue;
@@ -58,4 +58,47 @@ void update_sub_level(double value) {
             v->sub->amplitude(velocity * channel_volume.value * value);
         } while(++v < end);
     }
+}
+
+//update noise level
+void update_noise_level(double value) {
+    if (value>0) {
+        voice *v=voices,*end=voices+number_voices;
+        float velocity;
+        do {
+        if (v->note < 0) continue;
+            velocity = velocity_on.state ? v->velocity/127. : 1;
+            // v->sub->amplitude(velocity*channelVolume*GAIN_OSC*value);
+            v->noise->amplitude(velocity * channel_volume.value * value);
+        } while(++v < end);
+    }
+}
+
+void update_hpf_frequency(double value) {
+    voice *v=voices,*end=voices+number_voices;
+    do {
+        v->hpf->frequency(value);
+    } while (++v < end);
+}
+
+void update_lpf_frequency(double value) {
+    voice *v=voices,*end=voices+number_voices;
+    do {
+        v->lpf->frequency(value);
+    } while (++v < end);
+}
+
+void update_lpf_resonance(double value) {
+    voice *v=voices,*end=voices+number_voices;
+    do {
+        v->lpf->resonance(value);
+    } while (++v < end);
+}
+
+void update_sum_lpf() {
+
+}
+
+void update_lpf_env_level (double vvalue) {
+
 }

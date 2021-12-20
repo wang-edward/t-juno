@@ -1,6 +1,5 @@
 #include <math.h>
 #include "parameter.h"
-#include "update_parameter.h"
 #include <functional>
 //virtual params
 
@@ -16,20 +15,22 @@
 
 // button polyphony_on(); //use potentiometer for poly
 // button omni
-button velocity_on();
-button pulse_on();
-button saw_on();
-button pwm_lfo_on();
-button envelope_on();
-button flanger_on();
-button portamento_on();
+
+// button velocity_on();
+// button pulse_on();
+// button saw_on();
+// button pwm_lfo_on();
+// button envelope_on();
+// button flanger_on();
+// button portamento_on();
 
 //REAL PARAMS
-
+#include "update_parameter.h" 
 parameter master_volume (8, 1, 8, [](double value) -> double {
     return value/127.;
 },&update_master_volume
 );
+
 
 parameter lfo_rate (101, 0, 0, [](double value) -> double {
     return 30 * (pow((value/127.),2));
@@ -53,29 +54,33 @@ parameter pulse_width (24, 0, 3, [](double value) -> double {
 
 parameter sub_level (86, 0, 4, [](double value) -> double {
     return value/127.;
-},
+},&update_sub_level
 );
 
 parameter noise_level (87, 0, 5, [](double value) -> double {
     return max(0.01,value/127.);
-});
+},&update_noise_level
+);
 
 
 
 
 parameter hpf_frequency (75, 0, 6, [](double value) -> double {
     return pow(value,2);
-});
+}, &update_hpt_frequency
+);
 
 // 20-AUDIO_SAMPLE_RATE_EXACT/2.5
 parameter lpf_frequency (14, 0, 7, [](double value) -> double {
     return std::min((double)(pow(value,2)),10000);
-});
+}, &update_lpf_frequency
+);
 
 // 0.9-5.0
 parameter lpf_resonance (15, 0, 8, [](double value) -> double {
     return value*4.1/127.+0.9;
-});
+}, &update_lpf_resonance
+);
 
 parameter lpf_env_level (88, 0, 9, [](double value) -> double {
     return (value/127.) * 2;

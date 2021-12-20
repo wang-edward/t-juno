@@ -11,8 +11,8 @@ class parameter {
         int mux_position; // which pin of the mux to read (0-15)
         int mux_address; // which mux to search in (0-2)
 
-        function <int (int)> scaling_function; //function to convert raw value into useable
-        function <void (int)> update_function; //function to update synth engine with new parameter
+        function <double (double)> scaling_function; //function to convert raw value into useable
+        function <void (double)> update_function; //function to update synth engine with new parameter
 
         parameter(
             int n_midi_control, 
