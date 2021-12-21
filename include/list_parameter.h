@@ -23,6 +23,8 @@
 // button envelope_on();
 // button flanger_on();
 // button portamento_on();
+// button env_polarity();
+// button write();
 
 //REAL PARAMS
 #include "update_parameter.h" 
