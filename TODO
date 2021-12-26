@@ -6,3 +6,6 @@
     - also implement a poll every n ms instead of arduino delay
 
 - ADD DIFFERENT SCALING OPTIONS - 127 VS 1023 (just ctrlf !)
+
+- if (!envelope_on.state), then don't change the envelope parameters
+    - or maybe even set all params to 0
