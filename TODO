@@ -9,3 +9,7 @@
 
 - if (!envelope_on.state), then don't change the envelope parameters
     - or maybe even set all params to 0
+
+- do update & scaling and init and declaration for rotary potetentiometers
+
+- add midi cc reading for mod wheel
