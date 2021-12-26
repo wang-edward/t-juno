@@ -124,7 +124,7 @@ parameter envelope_decay(22, 1, 2, [](double value) -> double {
     return value*200./127.;
 });
 
-parameter envelope_sustain(22, 1, 3, [](double value) -> double {
+parameter envelope_sustain(23, 1, 3, [](double value) -> double {
     return value/127.;
 });
 
