@@ -11,5 +11,6 @@
     - or maybe even set all params to 0
 
 - do update & scaling and init and declaration for rotary potetentiometers
-
+    - add poly/mono/portamento rotary pot
+        - typedef values for different modes?
 - add midi cc reading for mod wheel
